@@ -4,9 +4,9 @@
 - Company needs to document that salaried employees did or did not get overtime each week.
 
 ## Models
-- Post -> date:date rationale:text
-- User -> Devise
-- AdminUser -> STI
+- X Post -> date:date rationale:text
+- X User -> Devise
+- X AdminUser -> STI
 
 ## Features:
 - Approval Workflow
@@ -16,4 +16,4 @@
 - Needs to be documented if employee did not log overtime
 
 ## UI:
-- Boostrap -> formatting
+- X Boostrap -> formatting

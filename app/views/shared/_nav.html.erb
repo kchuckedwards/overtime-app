@@ -1,6 +1,8 @@
 <div class="logo">
   <h1>Overtime Tracker</h1>
 </div>
+
+<% if current_user %>
 <ul class="custom-nav nav nav-tabs">
   <li class="nav-item">
     <%= link_to "Home", root_path, class: "nav-link #{active?(root_path)}" %>
@@ -11,10 +13,18 @@
   <li class="nav-item">
     <%= link_to "Add New Entry", new_post_path, class: "nav-link #{active?(new_post_path)}", id: "new_post_from_nav" %>
   </li>
-  <li class="nav-item dropdown float-right">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true " aria-expanded="false">Account</a>
+  <li class="nav-item dropdown pull-right">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true " aria-expanded="false">Options</a>
     <div class="dropdown-menu">
+
+      <!-- TODO -->
+      <% if current_user.try(:type) == 'AdminUser'%>
+        <%= link_to "Admin Dashboard", admin_root_path, class: "dropdown-item", method: "get" %>
+      <% end %>
       <%= link_to "Sign Out", destroy_user_session_path, class: "dropdown-item", method: "delete" %>
+      <!-- TODO -->
+
     </div>
   </li>
 </ul>
+<% end %>

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 	def index
-    @posts = Post.all
+		@posts = Post.all
 	end
 
 	def new
@@ -21,12 +21,11 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-		@post = Post.find(params[:id])
 	end
 
 	def update
-		if @post = Post.update(post_params)
-			redirect_to (:post), notice: 'Your post was edited successfully'
+		if @post.update(post_params)
+			redirect_to @post, notice: 'Your post was edited successfully'
 		else
 			render :edit
 		end
@@ -36,14 +35,14 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post.destroy
-		redirect_to posts_path, notice: 'Your post was deleted successfully'
+    @post.delete
+    redirect_to posts_path, notice: 'Your post was deleted successfully'
 	end
 
 	private
 
 	  def post_params
-	  	params.require(:post).permit(:date, :rationale, :user_id, :status)
+	  	params.require(:post).permit(:date, :rationale, :status)
 	  end
 
 	  def set_post
